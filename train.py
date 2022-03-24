@@ -8,6 +8,7 @@ References:
 """
 
 import argparse
+from ast import arg
 from sys import prefix
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -89,7 +90,17 @@ def main(args):
         trained_model_path = os.path.join(root_dir, args.output_dir)
         print("*"*10 + "Load trained model from: " + "*"*10)
         print(trained_model_path)
-        trained_model = T5Model("t5", trained_model_path, args=model_args)
+
+        ## beam search decoding
+        if args.beam_search:
+            model_args.do_sample = False
+            model_args.num_beams = args.num_beams
+            model_args.no_repeat_ngram_size = args.no_repeat_ngram_size
+            trained_model = T5Model("t5", trained_model_path, args=model_args)
+            
+        ## top k/ top p sampling
+        else:
+            trained_model = T5Model("t5", trained_model_path, args=model_args)
 
         ## test a sentence
         # prefix = "paraphrase"
@@ -109,7 +120,7 @@ def main(args):
         # Saving the predictions if needed
         print("*"*10 + "Svae the predictions" + "*"*10)
         os.makedirs("predictions", exist_ok=True)
-        with open("predictions/preds_for_bleu.txt", "w") as f:
+        with open(os.path.join('predictions', args.pred_file), "w") as f:
             for i, text in enumerate(eval_df["input_text"].tolist()):
                 f.write(str(text) + "\t" + truth[i] + "\t")
                 for pred in preds[i]:
@@ -129,8 +140,12 @@ if __name__ == '__main__':
 
     parser.add_argument('--num_return_sequences', type=int, default=5)
     parser.add_argument('--output_dir', type=str, default='outputs/')
+    parser.add_argument('--pred_file', type=str, default='predictions.txt')
     parser.add_argument('--train', action='store_true')
     parser.add_argument('--eval', action='store_true')
+    parser.add_argument('--beam_search', action='store_true')
+    parser.add_argument('--num_beams', type=int, default=5)
+    parser.add_argument('--no_repeat_ngram_size', type=int, default=2)
 
     args = parser.parse_args()
 
