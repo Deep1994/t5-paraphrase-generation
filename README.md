@@ -30,9 +30,11 @@ python bleu.py --predictions_file your_predictions_file.txt
 ```
 
 ## Result
+```
 Model: t5-small
 beam sarch: BLEU = 29.34 63.8/38.7/26.1/18.1
 top k/ top p sampling: BLEU = 21.48 56.6/29.8/18.0/11.4
+```
 
 Although top k/ top p sampling has lower bleu, the diversity of generated paraphrase is higher. On the contrary, beam search has higher bleu but lower diversity.
 
