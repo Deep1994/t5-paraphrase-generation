@@ -38,19 +38,19 @@ Although top k/ top p sampling has lower bleu, the diversity of generated paraph
 
 ```
 Original Question ::
-What is the meaning of living?
+What is the best comedy TV serial/series?
 
 Beam search: 
-0: How can I improve my English?
-1: What should I do to learn English?
-2: How can I learn to speak English?
-3: How can I improve my English language?
-4: How do I know English?
+0: What is the best comedy TV series?
+1: What are some of the best comedy TV series?
+2: Which is the best comedy TV series?
+3: What are the best comedy TV series?
+4: What are some of the best comedy TV shows?
 
 Top k/ Top p sampling:
-0: How can I improve my spoken English?
-1: How can I improve my English?
-2: How can I learn English?
-3: How do I learn English?
-4: How can I improve my English speaking?
+0: What are some of the best comedy TV dramas?
+1: What are the best comedy TV series or series?
+2: What are the best comedy television serials?
+3: What is the best comedy series?
+4: Which are some best comedy TV series series?
 ```
