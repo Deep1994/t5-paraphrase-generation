@@ -2,7 +2,7 @@
 ​T5 Model for generating paraphrases of english sentences. Trained on the Quora Paraphrase dataset. If you want to use our pretrained model, please see this [instruction](https://huggingface.co/Deep1994/t5-paraphrase-quora) for detail.
 
 ## Online demo website
-Click [https://huggingface.co/spaces/Deep1994/t5-paraphrase](https://huggingface.co/spaces/Deep1994/t5-paraphrase) to have a try online.
+Click [t5-paraphrase](https://huggingface.co/spaces/Deep1994/t5-paraphrase) to have a try online.
 
 <img width="1245" alt="image" src="https://user-images.githubusercontent.com/24366782/159983658-f213f1df-08f8-4378-bf5f-482966f99625.png">
 
