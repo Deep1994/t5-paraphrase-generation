@@ -1,5 +1,5 @@
 # t5-paraphrase-generation
-​T5 Model for generating paraphrases of english sentences. Trained on the Quora Paraphrase dataset.
+​T5 Model for generating paraphrases of english sentences. Trained on the Quora Paraphrase dataset. If you want to use our pretrained model, plese see this [instruction](https://huggingface.co/Deep1994/t5-paraphrase-quora) for detail.
 
 ## How to use
 First, you should install [Simple Transformers](https://github.com/ThilinaRajapakse/simpletransformers) via:
