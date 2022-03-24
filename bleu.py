@@ -1,14 +1,16 @@
 """
 calculate the BLEU on the predictions
+beam sarch: BLEU = 29.34 63.8/38.7/26.1/18.1
+top k/ top p sampling: BLEU = 21.48 56.6/29.8/18.0/11.4
 """
 from sacrebleu.metrics import BLEU
-import argparse
+import argparse, os
 
 def main(args):
     srcs = []
     refs = []
     preds = []
-    with open(args.predictions_dir, 'r') as f:
+    with open(os.path.join('predictions', args.predictions_file), 'r') as f:
         for line in f:
             line = line.strip().split('\t')
             srcs.append(line[0])
@@ -23,7 +25,7 @@ def main(args):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--predictions_dir', type=str, default='predictions/preds_for_bleu.txt')
+    parser.add_argument('--predictions_file', type=str, default='preds_for_bleu.txt')
     args = parser.parse_args()
     
     main(args)
